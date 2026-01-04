@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html" class="logo">
+                Cael <span>Fitch</span>
+            </a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <nav class="navbar">
+                <a href="index.html" >Home</a>
+                <a href="projects.html" >Engineering Portfolio</a>
+            </nav>
+            <a href="index.html#contact" class="gradient-btn" id="contact-btn">Contact Me</a>
+        </header>
+        <section class="Project-FP">
+            <div class="Project-FP-Pics" Width="480px">
+                <img src="Plarn Assembly Render.png" alt="">
+                <img src="Exploded Gears.png" alt="">
+            </div>
+            <div class="Project-Headline">
+                <h1 class="Heading" >"Plarn" Machine</h1>
+                <h3>Plarn is the yarn-like material made from upcycling plastic grocery bags. Since plastic bags cannot be recycled, crafters have turned to making plarn to reduce waste. Because this process is often tedious and time consuming, we designed the Plarn machine to semi-automate the upcycling process and improve the accessability of plarn making</h3>
+                <h3>Purdue ME463: Senior Design</h3>            
+            </div>
+        </section>
+        <h1 class="Heading">The Project</h1>
+        <section class="Project-Text-Section">
+            <div>
+                <h3>Background</h3>
+                <p>Plastic grocery bags are not recyclable: Although they are made of plastic, they have a high tendency of getting stuck and clogged in sorting mechanisms. To combat excess bags stockpiling in homes, crafters found a unique way to convert their plastic bags into a yarn material. This yarn could be crocheted into a much stronger, reusable bag, but the plarn making process is lengthy and strenuous, taking 50+ hours to make one ball of yarn. <br><br></p>
+            </div>
+            <div class="Proj-Visual">
+                <img src="Plarn_Handmade.png" Width="480" alt="">
+            </div>
+            <div style="text-align: center;">
+                <img src="Purdue ME Logo.png" Width="480" alt="">
+            </div>
+            <div>
+                <h3>Senior Design</h3>
+                <p>Our team of 6 had 16 weeks to design, assemble, and deliver our solution to improving the plarn making process. As the Mechanical Design Lead, I oversaw design options and the implementation of mechanical features to ensure all sub assemblies worked together. <br><br>Our design needed to be cheap, manufacutrable, require short lead times, and had to be ergonomic and require few interactions from the consumer. I designed mechanisms, oversaw part selections, and performed FEA and calculations to ensure materials could withstand high cycle counts.</p>
+            </div>
+        </section>
+        <h1 class="Heading">Our Design</h1>
+        <section class="Project-Text-Section">
+            <div>
+                <h3>Preparing the Plastic Bags</h3>
+                <p>Plastic bags on their own are not well suited for creating a long chain of material. To chain each bag together, they are sliced horizontally to form loops that can be tied. After cutting the handles and the bottom off, leaving the walls of the bag that form a tube, one groery bag can be turned into 8-16 loops. This process is actually very quick: by folding the bag in half 3 to 4 times, all the loops can be made with one cut, taking less than 30 seconds per bag. <br><br></p>
+            </div>
+            <div class="Proj-Visual">
+                <img src="Plarn Prep Diagram.png" alt="">
+            </div>
+            <div>
+                <video Height="300" autoplay muted loop>
+                    <source src="Plarn Wind Up.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div>
+                <h3>Twisting Mechanism</h3>
+                <p>Once the loops are created, they need to be chained and twisted together. The twisting motion requires both ends of the loop get twisted in one direction while being twisted together in the opposite direction. This strengthens the material, and restricts an unwinding and unraveling of the yarn. This rotational pattern need can be derived from a planetary gear's motion, which was used to mount each loop while it is twisted. <br><br></p>
+            </div>
+            <div>
+                <h3>Electronics in Action</h3>
+                <p>In addition to the twisting mechanism, I implemented a tension monitoring mechanism and spooling mechanism. When the plarn was fully in tension, it would trigger a limit switch, and the spool would loosen slightly to relieve tension. <br><br>I selected the motors and motor drivers based on calculated and assessed precision, power, speed, and torque requirements.</p>
+            </div>
+            <div>
+                <img src="Plarn Motors.png" alt="">
+            </div>
+            <div>
+                <h3><br>Final Design and Safety</h3>
+                <p>Throughout the designing process, I made sure all parts were designed with intent for plastic injection molding by maintaining drafts and minimzing solid pockets. This was intended to mimic real world product design constraints. <br><br> All electronics and gears are completely encased within the mechanism to prevent anything getting caught. To use the machine, only one button is needed which lights up when it needs to be pressed.</p>
+            </div>
+            <div>
+                <img src="Plarn Machine IRL.png" alt="">
+            </div>
+            <div>
+                <h3>Results</h3>
+                <img src="Plarn Results.png" alt="">
+            </div>
+            <div>
+                <p><br><br>Overall, the project was a success and we were able to deliver a working prototype a week ahead of out deadline. Our plarn machine is desktop sized, costs less than $20 to manufacture, and reduces the plarn making process by 5x.</p>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://github.com/scifall1" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                    <i class='bx  bxl-linkedin'  ></i> 
+                </a>
+                <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Cael Fitch. All rights reserved.</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

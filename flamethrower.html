@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html" class="logo">
+                Cael <span>Fitch</span>
+            </a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <nav class="navbar">
+                <a href="index.html" >Home</a>
+                <a href="projects.html" >Engineering Portfolio</a>
+            </nav>
+            <a href="index.html#contact" class="gradient-btn" id="contact-btn">Contact Me</a>
+        </header>
+        <section class="Project-FP">
+            <div class="Project-FP-Pics">
+                <video autoplay muted loop>
+                    <source src="Cael Firebending.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video autoplay muted loop>
+                    <source src="firebender render.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="Project-Headline">
+                <h1 class="Heading" >Punch-Activated Flamethrower*</h1>
+                <h3>Inspired by <span>Avatar the Last Airbender, </span>this device gives you the power of "Fire Bending"</h3>
+            </div>
+        </section>
+        <h1 class="Heading" >As Seen In Media</h1>
+        <section class="Project-Text-Section">
+            <div class="Project-Column">
+                <h3>Halo</h3>
+                <div class="Proj-Visual">
+                    <img src="KungFu Firebending.png" Width="480" alt="">
+                </div>
+                <p>We gave the flamethrower to 3 Kung Fu Martial Artists!</p>
+                <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">firebender by @HaloInSF <br><br>tag your favorite x user, to win one for free.<br><br>3 for sale. 1 free. <a href="https://t.co/cZnHhOhXDH">pic.twitter.com/cZnHhOhXDH</a></p>&mdash; AnhPhu Nguyen (@AnhPhuNguyen1) <a href="https://twitter.com/AnhPhuNguyen1/status/1950644225126826370?ref_src=twsrc%5Etfw">July 30, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <p>*Is this a flamethrower? Yes, except in the state of California where a Flamethrower is defined as "Emitting flames over 10 ft of distance". Owning a Flamethrower in California is illegal, but since this only reaches 8 ft, it would be more accurately be described as a long distance camping stove. But if it is in any other state? Then yeah, its a Flamethrower</p>
+            </div>
+            <div class="Project-Column">
+                <div>
+                    <h3>REK Robotics</h3>
+                </div>
+                <div>
+                    <p>I got involved with the <span>Underground Robotic Fighting Ring</span> of San Francisco. And that is my flamethrower on the Apex Predator of robotic combat</p>
+                </div>
+                <div>
+                    <video Height="300" autoplay muted loop>
+                        <source src="REK X.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img src="Pic with New Robot.JPG" alt="" Height="300">
+                </div>
+                <div>
+                <p><a href="https://x.com/cixliv" target="_blank"><span text-decoration: none;>CIX</span></a>, the dominating champion of SF, invited me to see what damage could be done by a firebending robot. We wanted to showcase the thrill and primal possibilies that took place in this budding community</p>
+                </div>
+                <div class="Small-Box">
+                    <a href="https://www.nytimes.com/2025/09/19/technology/san-francisco-robot-fight.html"><img src="NYT Robot Fight Club.png" alt="NYT Article" Width="240"></a>
+                    <p> This is turning "Real Steel" turned into the real deal</p>
+                </div>
+                <div>
+                    <img src="Insta Robot Fight.png" alt="" Height="220">
+                    <img src="Pic with OG Robot.JPG" alt="" Height="220">
+                    <video Height="220" autoplay muted loop>
+                        <source src="Edit Fire Extinguisher.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+        <h1 class="Heading" >How It Was Built</h1>
+        <section class="Project-Text-Section">
+            <div>
+                <h3>Overview</h3>
+                <p><a href="https://peterhe.dev/index.html" target="_blank"><span text-decoration: none;>Peter He</span></a> and I spent the summer designing and building the flamethrower in the basement of Halo, the SF Startup we had joined for the summer<br><br>
+                This is the first hand-held flamethrower that connects directly to an onboard butane canister allowing automatically refuel between punches, providing the most entertaining firebending experience yet</p>
+            </div>
+            <div class="Proj-Visual">
+                <img src="firebender.gif" Width="480" alt="">
+            </div>
+            <div style="text-align: center;">
+                <img src="fireboard.png" Width="480" alt="">
+                <img src="PeterPic.JPG" Height="240" alt="">
+                <img src="CaelPic.JPG" Height="240" alt="">
+            </div>
+            <div>
+                <p><br>I designed and assembled the Electricals and Butante Plumbing of the Flamethrower. The system ran off of a XIAO NRF52840 which controlled the Relays which triggered the Arc Lighter Solenoid valves. The onboard IMU detects the acceleration and quick halt of a punching fist, upon which the flamethrower activated. <br> <br> The system included many safety mechanisms: An E-Stop, NC-Solenoids, Pressure Release Vents, and Pressure Sensors to monitor the capacity of the flamethrower</p>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://github.com/scifall1" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                    <i class='bx  bxl-linkedin'  ></i> 
+                </a>
+                <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Cael Fitch. All rights reserved.</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

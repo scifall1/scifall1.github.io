@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html" class="logo">
+                Cael <span>Fitch</span>
+            </a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <nav class="navbar">
+                <a href="index.html" >Home</a>
+                <a href="projects.html" >Engineering Portfolio</a>
+            </nav>
+            <a href="index.html#contact" class="gradient-btn" id="contact-btn">Contact Me</a>
+        </header>
+        <section class="Project-FP">
+            <div class="Project-FP-Pics">
+                <img src="Glasses.jfif" alt="">
+            </div>
+            <div class="Project-Headline">
+                <h1 class="Heading" >AI Chess Glasses</h1>
+                <h3>Using Computer Vision to look at any chess board and tell you the best chess move to make</h3>
+                <h3>I built a pair of glasses using mini-FOV drone parts to capture what the user was seeing, and using <a href="https://roboflow.com/universe" target="_blank"><span text-decoration: none;>Roboflow.</span></a> I made my own CV Ai model for identifying chess pieces and the chess board</h3>
+            </div>
+        </section>
+    
+        <h1 class="Heading" >How It Was Built</h1>
+        <section class="Project-Text-Section">
+            <div>
+                <h3>Overview</h3>
+                <p>The system is made of three essential components: <br>The <span>Glasses,</span> the <span>Computer,</span> and the <span>Cloud</span>. <br> <br></p>
+                <h3>The Glasses</h3>
+                <p>The glasses hold the camera module, the Radio Transmitter, the bone conducting headphones, and the batteries that power everything. <br> <br>The Zeus Radio transmitter takes the UART video from the camera and wirelessly transmits it to the computer. <br><br>The bone-conducting headphones are essential for ensuring only the wearer can hear the chess moves relayed to them, while still resembling the glasses shape</p>
+            </div>
+            <div>
+                <img src="Glasses_Parts.png" alt="">
+            </div>
+            <div>
+                <img src="AI_Prediction.png" alt="">
+            </div>
+            <div>
+                <h3>Computer Vision</h3>
+                <p>Once the computer receives the video stream, it captures a frame and sends it to my <span text-decoration: none;>Roboflow CV Models.</span> My first CV model identifies and labeles every chess piece visibible. Using 7000+ labeled chess datasets and over 500 labeled images by me, the computer vision model has a 98% precision and recall evalutation. <br> <br> The second model uses segmentation to identify the outline of the chess board, since the board could be viewed from various different angles and perspectives.</p>
+            </div>
+            <div>
+                <h3>Algorithms</h3>
+                <p>Once the pieces have been identified, their position on the chess board needs to calculated. If I could identify where the corners of the chess board were, I could take the quadralateral and divide it into an 8x8 grid and identify which cell each piece was in. <br><br>To find the corners, I performed a <a href="https://en.wikipedia.org/wiki/Hough_transform" target="_blank"><span text-decoration: none;>Hough Transform.</span></a> on the data points that outline the board. This involves taking every pair of neighboring points on the edge and calculating the line they form. This line can be represented as y = mx + b, but I chose to represent the lines as: <br><span>r = xcos(θ) + ysin(θ) </span><br>This avoids errors that involve infinity if the slope of the line is ever verticle.</p>
+                <p>Using the Hough Transform, the r and θ of each pair are mapped onto a graph. Since each side of the board will all have the same r and θ, this graph generates four clusters of points that represent the boarders of the chess board. The intersection of these four lines are calculated which then identifies the four corners of the board. <br><br></p>
+                <p>Now, with their positions identified, the configuration of the chess board is found. Using the Stockfish Python Library, the best chess move is identified. A text-to-speech message of the best chess move is generated and sent to the headphones via bluetooth</p>
+            </div>
+            <div>
+                <img src="Chess_Board_Prediction.jpg" alt="">
+                <img src="CV_Algorithm.jfif" alt="">
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://github.com/scifall1" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                    <i class='bx  bxl-linkedin'  ></i> 
+                </a>
+                <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Cael Fitch. All rights reserved.</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

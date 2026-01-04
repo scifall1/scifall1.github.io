@@ -1,331 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Puck vs Hemisphere — Adaptive Buoyancy Visualization</title>
-<style>
-  html,body{height:100%;margin:0;background:#e8f2ff;font-family:sans-serif}
-  #controls{position:absolute;right:16px;top:12px;background:rgba(255,255,255,0.9);padding:10px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
-  button{margin:4px;}
-  canvas{display:block;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
 <body>
-<div id="controls">
-  <strong>Puck vs Hemisphere</strong><br>
-  <button id="reset">Reset</button>
-</div>
+    <header class="header">
+        <a href="#home" class="logo">
+            Cael <span>Fitch</span>
+        </a>
+        <i class="bx bx-menu" id="menu-icon"></i>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-<script>
-const {Engine,Render,Runner,World,Bodies,Body,Vector,Mouse,MouseConstraint,Events}=Matter;
+        <nav class="navbar">
+            <a href="#home" >Home</a>
+            <a href="projects.html" >Engineering Portfolio</a>
+        </nav>
+        <a href="#contact" class="gradient-btn" id="contact-btn">Contact Me</a>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Cael Fitch</h1>
+            <h3>I'm a <span>Mechanical Engineer</span> from Purdue University with a design, automation, and manufacturing background</h3>
 
-// --- Basic setup ---
-const engine=Engine.create();
-engine.gravity.y=1;
-const world=engine.world;
+            <div class="social-icons">
+                <a href="https://github.com/scifall1" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                    <i class='bx  bxl-linkedin'  ></i> 
+                </a>
+                <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+            </div>
+        </div>
+        <div class="home-img">
+            <img src="Profile.jpg" alt="">
+        </div>
+    </section>
 
-const width=900,height=600;
-const render=Render.create({
-  element:document.body,
-  engine,
-  options:{width,height,wireframes:false,background:'#cfe9ff'}
-});
-Render.run(render);
-Runner.run(Runner.create(),engine);
+    <section class="Ft-Proj" id="Ft-Proj">
+        <h1 class="Heading" >Featured Projects</h1>
+        <div class="projects-box">
 
-// --- Water setup ---
-const waterY = height*0.6;
-const water = Bodies.rectangle(width/2,(height+waterY)/2,width,height-waterY,{
-  isStatic:true,isSensor:true,
-  render:{fillStyle:'rgba(40,120,220,0.25)'}
-});
-World.add(world,water);
-World.add(world,[
-  Bodies.rectangle(width/2,height+30,width,60,{isStatic:true}),
-  Bodies.rectangle(-30,height/2,60,height,{isStatic:true}),
-  Bodies.rectangle(width+30,height/2,60,height,{isStatic:true})
-]);
+            <a class="project-card" href="flamethrower.html">
+                <video width="320" height="240" autoplay muted loop>
+                    <source src="Cael Firebending.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Punch-Activated Flamethrower</h3>
+                <p>Inspired by <span>Avatar the Last Airbender, </span>this device gives you the power of "Fire Bending"</p>
+            </a>
 
-// --- Boats ---
-const R=50;
-const puckThickness=30;
-const matDensity=0.035;
+            <a class="project-card" href="AiChessGlasses.html">
+                <img src="Glasses.jfif" alt="">
+                <h3>Ai Chess Glasses</h3>
+                <p> I made a pair of wireless glasses that use AI to analyze any chess board and covertly suggest the best chess move to make.</p>
+            </a>
 
-const puck=Bodies.rectangle(width*0.33,waterY-20,R*2,puckThickness,{
-  chamfer:{radius:10},frictionAir:0.03,render:{fillStyle:'#d33'}
-});
-Body.setDensity(puck,matDensity*4);
+            <a class="project-card" href="RC_Car.html">
+                <img src="Inner_Car.jpg" alt="">
+                <h3>Parametric RC Car</h3>
+                <p>I disassembled, reverse engineered, and remodeled an RC Car with a parametric, “stretchable” structure</p>
+            </a>
+            <a class="project-card" href="SpaceX.html">
+                <img src="SpaceXLogo.png" alt="">
+                <h3>SpaceX-Starlink Internship</h3>
+                <p>I worked as a Battery Manufacturing Engineer at Starlink's orbital satellite production facility</p>
+            </a>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <form action="#">
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email">
+                </div>
 
-// Hemisphere
-const seg=40;
-const verts=[];
-for(let i=0;i<=seg;i++){
-  const t=Math.PI*(1-i/seg);
-  verts.push({x:Math.cos(t)*R,y:Math.sin(t)*R});
-}
-verts.push({x:R,y:0}); verts.push({x:-R,y:0});
-const hemi=Bodies.fromVertices(width*0.66,waterY-10,[verts],
-  {frictionAir:0.03,render:{fillStyle:'#fa7a2f'}});
-Body.setDensity(hemi,matDensity*2.5);
-
-World.add(world,[puck,hemi]);
-
-// --- Stick figures (unchanged) ---
-function makeStickFigure(boat){
-  const bodyH = 30;
-  const bodyW = 8;
-  const headR = 6;
-
-  const torso = Bodies.rectangle(0, -bodyH/2, bodyW, bodyH, {render:{fillStyle:'#222'}});
-  const head = Bodies.circle(0, -bodyH - headR, headR, {render:{fillStyle:'#222'}});
-  const stick = Body.create({parts:[torso, head],frictionAir:0.03});
-  Body.setDensity(stick,0.00016);
-
-  const vertsLocal = stick.vertices.map(v => Vector.rotate(Vector.sub(v, stick.position), -stick.angle));
-  const bottomLocalY = Math.max(...vertsLocal.map(v => v.y));
-  stick._bottomLocalY = bottomLocalY;
-
-  const negGroup = -Math.abs(boat.id || (Math.floor(Math.random()*1000000)+1));
-  boat.collisionFilter.group = negGroup;
-  stick.collisionFilter.group = negGroup;
-
-  return {stick, boat, localX:0, bodyH, headR};
-}
-
-const puckStick = makeStickFigure(puck);
-const hemiStick = makeStickFigure(hemi);
-const stickFigures = [puckStick, hemiStick];
-World.add(world,[puckStick.stick, hemiStick.stick]);
-
-// --- Mouse control ---
-const mouse = Mouse.create(render.canvas);
-const mConstraint = MouseConstraint.create(engine,{
-  mouse,
-  constraint:{stiffness:0.002,render:{visible:false}}
-});
-World.add(world,mConstraint);
-render.mouse = mouse;
-
-let grabbed=null;
-Events.on(mConstraint,'startdrag',e=>{
-  const sf = stickFigures.find(sf=>sf.stick===e.body);
-  if(sf) grabbed=sf;
-});
-Events.on(mConstraint,'enddrag',()=>grabbed=null);
-
-// --- Deck & bottom helpers ---
-function getDeckYAtLocalX(boat, localX){
-  const vertsLocal = boat.vertices.map(v => Vector.rotate(Vector.sub(v, boat.position), -boat.angle));
-  const ys=[];
-  for(let i=0;i<vertsLocal.length;i++){
-    const A=vertsLocal[i],B=vertsLocal[(i+1)%vertsLocal.length];
-    const minX=Math.min(A.x,B.x), maxX=Math.max(A.x,B.x);
-    if(localX>=minX-1e-8 && localX<=maxX+1e-8){
-      const dx=B.x-A.x;
-      const t=Math.abs(dx)<1e-9?0:(localX-A.x)/dx;
-      const y=A.y+(B.y-A.y)*t;
-      if(Number.isFinite(y)) ys.push(y);
-    }
-  }
-  if(ys.length>0) return Math.min(...ys);
-  return vertsLocal.reduce((min,v)=>Math.min(min,v.y),Infinity);
-}
-
-function getBottomYAtLocalX(boat, localX){
-  const vertsLocal = boat.vertices.map(v => Vector.rotate(Vector.sub(v, boat.position), -boat.angle));
-  const ys=[];
-  for(let i=0;i<vertsLocal.length;i++){
-    const A=vertsLocal[i],B=vertsLocal[(i+1)%vertsLocal.length];
-    const minX=Math.min(A.x,B.x), maxX=Math.max(A.x,B.x);
-    if(localX>=minX-1e-8 && localX<=maxX+1e-8){
-      const dx=B.x-A.x;
-      const t=Math.abs(dx)<1e-9?0:(localX-A.x)/dx;
-      const y=A.y+(B.y-A.y)*t;
-      if(Number.isFinite(y)) ys.push(y);
-    }
-  }
-  if(ys.length>0) return Math.max(...ys);
-  return vertsLocal.reduce((max,v)=>Math.max(max,v.y),-Infinity);
-}
-
-// --- Buoyancy helpers ---
-function worldPoly(body){return body.vertices.map(v=>({x:v.x,y:v.y}));}
-function clipPoly(poly,clipY){
-  const out=[]; if(!poly.length) return out;
-  for(let i=0;i<poly.length;i++){
-    const A=poly[i],B=poly[(i+1)%poly.length];
-    const inA=A.y>=clipY,inB=B.y>=clipY;
-    if(inA&&inB) out.push(B);
-    else if(inA&&!inB){
-      const t=(clipY-A.y)/(B.y-A.y);
-      out.push({x:A.x+(B.x-A.x)*t,y:clipY});
-    } else if(!inA&&inB){
-      const t=(clipY-A.y)/(B.y-A.y);
-      out.push({x:A.x+(B.x-A.x)*t,y:clipY});
-      out.push(B);
-    }
-  }
-  return out;
-}
-function areaCentroid(poly){
-  let A=0,Cx=0,Cy=0;
-  for(let i=0;i<poly.length;i++){
-    const p0=poly[i],p1=poly[(i+1)%poly.length];
-    const cross=p0.x*p1.y-p1.x*p0.y;
-    A+=cross; Cx+=(p0.x+p1.x)*cross; Cy+=(p0.y+p1.y)*cross;
-  }
-  A*=0.5;
-  if(Math.abs(A)<1e-8) return {area:0,centroid:{x:0,y:0}};
-  return {area:Math.abs(A),centroid:{x:Cx/(6*A),y:Cy/(6*A)}};
-}
-
-// --- Constants ---
-const rho=0.0003;
-const g=engine.gravity.y;
-const drag=0.015;
-const maxBuoyMult=1.5;
-
-// --- Store arrow local anchors (curvature tracking) ---
-function getHullAnchors(boat, n=40){
-  const vertsLocal = boat.vertices.map(v=>Vector.rotate(Vector.sub(v,boat.position),-boat.angle));
-  const minX=Math.min(...vertsLocal.map(v=>v.x));
-  const maxX=Math.max(...vertsLocal.map(v=>v.x));
-  const anchors=[];
-  for(let i=0;i<n;i++){
-    const localX=minX+(maxX-minX)*(i/(n-1));
-    const localY=getBottomYAtLocalX({vertices:boat.vertices,position:boat.position,angle:boat.angle},localX);
-    anchors.push({x:localX,y:localY});
-  }
-  return anchors;
-}
-
-const puckAnchors = getHullAnchors(puck,40);
-const hemiAnchors = getHullAnchors(hemi,40);
-
-// --- Force visualization data ---
-const buoyVis=new Map();
-
-// --- Physics update ---
-Events.on(engine,'beforeUpdate',()=>{
-  buoyVis.clear();
-
-  // Stick figure attachment
-  stickFigures.forEach(sf=>{
-    const {stick,boat}=sf;
-    Body.setAngle(stick, boat.angle);
-    const maxSlide=R*0.9;
-    if(grabbed===sf){
-      const mouseLocal=Vector.rotate(Vector.sub(mouse.position,boat.position),-boat.angle);
-      sf.localX=Math.max(-maxSlide,Math.min(maxSlide,mouseLocal.x));
-    }
-    const deckY=getDeckYAtLocalX(boat,sf.localX);
-    const desiredFeetLocal={x:sf.localX,y:deckY};
-    const desiredFeetWorld=Vector.add(boat.position,Vector.rotate(desiredFeetLocal,boat.angle));
-    const bottomLocalVec={x:0,y:stick._bottomLocalY};
-    const bottomWorldVec=Vector.rotate(bottomLocalVec,stick.angle);
-    const stickCenterWorld=Vector.sub(desiredFeetWorld,bottomWorldVec);
-    Body.setPosition(stick,stickCenterWorld);
-    Body.setVelocity(stick,boat.velocity);
-    stick.angularVelocity=boat.angularVelocity;
-    const stickWeight=stick.mass*g;
-    const force={x:0,y:stickWeight};
-    Body.applyForce(boat,desiredFeetWorld,force);
-    const lever=Vector.sub(desiredFeetWorld,boat.position);
-    const torque=lever.x*force.y-lever.y*force.x;
-    boat.torque=(boat.torque||0)+torque;
-  });
-
-  // Buoyancy + visualization
-  [[puck,puckAnchors],[hemi,hemiAnchors]].forEach(([b,anchors])=>{
-    const poly=worldPoly(b);
-    const sub=clipPoly(poly,waterY);
-    if(sub.length<3) return;
-    const {area,centroid}=areaCentroid(sub);
-    if(area<=0) return;
-    const buoyMag=rho*g*area;
-    const weightMag=b.mass*g;
-    const F=Math.min(buoyMag,weightMag*maxBuoyMult);
-    Body.applyForce(b,centroid,{x:0,y:-F});
-    Body.applyForce(b,b.position,{x:-drag*b.velocity.x,y:-drag*b.velocity.y});
-    b.angularVelocity*=0.985;
-
-    // Visualization arrows distributed along submerged hull
-    const forces=[];
-    anchors.forEach(local=>{
-      const worldP=Vector.add(b.position,Vector.rotate(local,b.angle));
-      const depth=worldP.y-waterY;
-      if(depth>0){
-        const fMag=depth*0.002;
-        forces.push({p:worldP,fMag});
-      }
-    });
-    buoyVis.set(b,forces);
-  });
-});
-
-// --- Draw ---
-Events.on(render,'afterRender',()=>{
-  const ctx=render.context;
-  ctx.save();
-  ctx.beginPath();
-  ctx.moveTo(0,waterY);
-  ctx.lineTo(width,waterY);
-  ctx.setLineDash([6,6]);
-  ctx.lineWidth=2;
-  ctx.strokeStyle='rgba(0,50,120,0.6)';
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  for(const [b,forces] of buoyVis.entries()){
-    ctx.lineWidth=2;
-    ctx.strokeStyle='rgba(0,0,255,0.9)';
-    forces.forEach(f=>{
-      const len=f.fMag*800;
-      const startY=f.p.y+len;
-      ctx.beginPath();
-      ctx.moveTo(f.p.x,startY);
-      ctx.lineTo(f.p.x,f.p.y);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(f.p.x-3,f.p.y+6);
-      ctx.lineTo(f.p.x,f.p.y);
-      ctx.lineTo(f.p.x+3,f.p.y+6);
-      ctx.stroke();
-    });
-  }
-  ctx.restore();
-});
-
-// --- Reset ---
-function placeSticksOnBoats(){
-  stickFigures.forEach(sf=>{
-    const {stick,boat}=sf;
-    sf.localX=0;
-    const deckY=getDeckYAtLocalX(boat,0);
-    const desiredFeetLocal={x:0,y:deckY};
-    const desiredFeetWorld=Vector.add(boat.position,Vector.rotate(desiredFeetLocal,boat.angle));
-    const bottomLocalVec={x:0,y:stick._bottomLocalY};
-    const bottomWorldVec=Vector.rotate(bottomLocalVec,stick.angle);
-    const stickCenterWorld=Vector.sub(desiredFeetWorld,bottomWorldVec);
-    Body.setPosition(stick,stickCenterWorld);
-    Body.setVelocity(stick,{x:0,y:0});
-    Body.setAngularVelocity(stick,0);
-    Body.setAngle(stick,boat.angle);
-  });
-}
-
-document.getElementById('reset').onclick=()=>{
-  [puck,hemi].forEach((b,i)=>{
-    Body.setPosition(b,{x:width*(0.33+0.33*i),y:waterY-20});
-    Body.setVelocity(b,{x:0,y:0});
-    Body.setAngularVelocity(b,0);
-    Body.setAngle(b,0);
-  });
-  setTimeout(placeSticksOnBoats,0);
-};
-placeSticksOnBoats();
-</script>
+                <div class="input-box">
+                    <input type="text" placeholder="Subject">
+                </div>
+            </div>
+            <div class="input-group-2">
+                <textarea name="" id="" placeholder="Your Message" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send Message" class="gradient-btn" id="submit-btn">
+            </div>
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://github.com/scifall1" target="_blank">
+                <i class="bx bxl-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                <i class='bx  bxl-linkedin'  ></i> 
+            </a>
+            <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                <i class="bx bxl-instagram-alt"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2025 Cael Fitch. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

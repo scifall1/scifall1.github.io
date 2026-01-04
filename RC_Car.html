@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html" class="logo">
+                Cael <span>Fitch</span>
+            </a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <nav class="navbar">
+                <a href="index.html" >Home</a>
+                <a href="projects.html" >Engineering Portfolio</a>
+            </nav>
+            <a href="index.html#contact" class="gradient-btn" id="contact-btn">Contact Me</a>
+        </header>
+        <section class="Project-FP">
+            <div class="Project-FP-Pics">
+                <img src="Inner_Car.jpg" alt="">
+                <img src="Car_Skeleton.jpg" alt="">
+            </div>
+            <div class="Project-Headline">
+                <h1 class="Heading" >Parametric RC Car</h1>
+                <h3>In Purdue ME 496, I disassembled, reverse engineered, and remodeled an RC Car with a parametric, “stretchable” structure. <br><br>The assembly was done entirely in Seimens NX by first building the parametric wireframe, and linking those sketches to form solid bodies. <br><br>This allowed me to alter different parameters such as the height, width, and tire shape on the car, and watch the assembly adapt instantly.</h3>
+            </div>
+        </section>
+        <h1 class="Heading" >The Project</h1>
+        <section class="Project-Text-Section">
+            <div>
+                <h3><br>Surface Modeling</h3>
+                <p>A 3D Wire Frame was made with planes and splines. Then, 2D surfaces were generated and spliced together to form the shell. <br> The Quality of the curvature continuity was maintained with appropriate degrees of curvature and tangency. <br>The skin was designed for vacuum forming manufacturability with draft surfaces</p>
+            </div>
+            <div>
+                <img src="RC_Skin.png" alt="">
+            </div>
+            <div>
+                <img src="RC_FEA.png" alt="">
+            </div>
+            <div>
+                <h3>FEA Simulations</h3>
+                <p>Each part in the assembly was redesigned for strength and rigidity using FEA simulations. <br><br>Topology optimization was used to reduce the weight and stress on each part based on the calculated forces the RC car experiences. This practice is used in F1 Racing to minimize the total weight of the car with complex carbon fiber structural components.</p>
+            </div>
+            <div>
+                <h3><br>Fluid Simulation</h3>
+                <p>The surface of the car was optimized to reduce the drag load on the assembly. Because the car was designed parametrically, different surfaces could quickly be iterated on and tested to find the minimum drag.</p>
+            </div>
+            <div>
+                <img src="RC_Fluid.png">
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://github.com/scifall1" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cael-fitch/" target="_blank">
+                    <i class='bx  bxl-linkedin'  ></i> 
+                </a>
+                <a href="https://www.instagram.com/cael_fitch/" target="_blank">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Cael Fitch. All rights reserved.</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
